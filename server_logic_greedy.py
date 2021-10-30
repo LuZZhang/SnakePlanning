@@ -186,6 +186,9 @@ def choose_move(data: dict) -> str:
 
     # TODO: Using information from 'data', don't let your Battlesnake pick a move that would collide with another Battlesnake
     possible_moves = avoid_snake(snakes, my_head, possible_moves)
+    
+    # Avoid hazards
+    possible_moves = avoid_hazards(hazards, my_head, possible_moves)
 
     # If not moves could choose or no foods currently, randomly choose a action.
     if not possible_moves or not foods: return random.choice(["up", "down", "left", "right"])
